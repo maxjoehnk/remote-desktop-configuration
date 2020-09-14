@@ -1,10 +1,13 @@
 mod sound;
 mod util;
+mod games;
 
 use tide::{Server, Response, Body};
 use serde::Serialize;
 use crate::modules::bluetooth::BluetoothModule;
 use crate::web_api::sound::create_sound_api;
+use crate::web_api::games::create_games_api;
+use crate::modules::monitoring::{MonitoringModule, MonitoringTask};
 
 type Request = tide::Request<()>;
 
@@ -12,6 +15,8 @@ pub fn create_api() -> Server<()> {
     let mut app = tide::new();
     create_bluetooth_api(&mut app);
     create_sound_api(&mut app);
+    create_games_api(&mut app);
+    create_monitoring_api(&mut app);
     app.at("/api/icons/:name").get(|req: Request| async move {
         let name = req.param::<String>("name")?;
         let icon = std::fs::read_to_string(format!("/usr/share/icons/Papirus/128x128/apps/{}.svg", name))?;
@@ -22,6 +27,16 @@ pub fn create_api() -> Server<()> {
     });
 
     app
+}
+
+fn create_monitoring_api(app: &mut Server<()>) {
+    MonitoringTask::new().unwrap().start();
+    app.at("/api/monitoring").get(|req: Request| async move {
+        let module = MonitoringModule::new();
+        let monitoring = module.get_data();
+
+        to_json(&monitoring)
+    });
 }
 
 fn create_bluetooth_api(app: &mut Server<()>) {

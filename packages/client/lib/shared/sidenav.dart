@@ -1,4 +1,7 @@
 import 'package:client/modules/bluetooth/route.dart';
+import 'package:client/modules/controllers/route.dart';
+import 'package:client/modules/games/route.dart';
+import 'package:client/modules/monitoring/route.dart';
 import 'package:client/modules/sound/route.dart';
 import 'package:flutter/material.dart';
 
@@ -9,8 +12,11 @@ class Sidenav extends StatelessWidget {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          NavItem('Sound', SoundRoute.routeName, icon: Icons.volume_up),
-          NavItem('Bluetooth', BluetoothRoute.routeName, icon: Icons.bluetooth)
+          NavItem('Sound', SoundRoute.routeName, icon: SoundRoute.icon),
+          NavItem('Bluetooth', BluetoothRoute.routeName, icon: BluetoothRoute.icon),
+          NavItem('Games', GameRoute.routeName, icon: GameRoute.icon),
+          NavItem('Controllers', ControllerRoute.routeName, icon: ControllerRoute.icon),
+          NavItem('Sensors', MonitoringRoute.routeName, icon: MonitoringRoute.icon),
         ],
       )
     );

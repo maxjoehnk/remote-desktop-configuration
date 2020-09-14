@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SoundRoute extends StatefulWidget {
   static const routeName = '/sound';
+  static const icon = Icons.volume_up;
 
   @override
   _SoundRouteState createState() => _SoundRouteState();

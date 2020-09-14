@@ -1,4 +1,4 @@
-name: remote-desktop-configuration-client
+name: client
 description: Remote Configuration Util for Living Room PCs
 publish_to: 'none'
 version: 1.0.0+1
@@ -17,6 +17,7 @@ dependencies:
   flutter_bloc: ^6.0.0
   rxdart: ^0.24.1
   flutter_svg: ^0.18.1
+  fl_chart: ^0.11.1
 
 dev_dependencies:
   flutter_test:
