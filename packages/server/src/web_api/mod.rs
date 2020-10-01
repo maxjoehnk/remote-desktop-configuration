@@ -8,6 +8,7 @@ use crate::modules::bluetooth::BluetoothModule;
 use crate::web_api::sound::create_sound_api;
 use crate::web_api::games::create_games_api;
 use crate::modules::monitoring::{MonitoringModule, MonitoringTask};
+use crate::modules::disks::DisksModule;
 
 type Request = tide::Request<()>;
 
@@ -17,6 +18,7 @@ pub fn create_api() -> Server<()> {
     create_sound_api(&mut app);
     create_games_api(&mut app);
     create_monitoring_api(&mut app);
+    create_disks_api(&mut app);
     app.at("/api/icons/:name").get(|req: Request| async move {
         let name = req.param::<String>("name")?;
         let icon = std::fs::read_to_string(format!("/usr/share/icons/Papirus/128x128/apps/{}.svg", name))?;
@@ -29,9 +31,18 @@ pub fn create_api() -> Server<()> {
     app
 }
 
+fn create_disks_api(app: &mut Server<()>) {
+    app.at("/api/disks").get(|_| async {
+        let module = DisksModule::new();
+        let hdds = module.get_mounts()?;
+
+        to_json(&hdds)
+    });
+}
+
 fn create_monitoring_api(app: &mut Server<()>) {
     MonitoringTask::new().unwrap().start();
-    app.at("/api/monitoring").get(|req: Request| async move {
+    app.at("/api/monitoring").get(|_| async {
         let module = MonitoringModule::new();
         let monitoring = module.get_data();
 

@@ -14,7 +14,7 @@ use std::collections::HashMap;
 use std::time::Duration;
 
 lazy_static! {
-    static ref data: NonEmptyPinboard<HashMap<String, MonitoringItem>> = NonEmptyPinboard::new(HashMap::new());
+    static ref DATA: NonEmptyPinboard<HashMap<String, MonitoringItem>> = NonEmptyPinboard::new(HashMap::new());
 }
 
 const SLEEP_DURATION: u64 = 2;
@@ -60,7 +60,7 @@ impl MonitoringTask {
             .flatten()
             .collect::<Vec<_>>();
 
-        let mut history = data.read();
+        let mut history = DATA.read();
 
         for snapshot in snapshots {
             if let Some(history_entry) = history.get_mut(&snapshot.name) {
@@ -75,7 +75,7 @@ impl MonitoringTask {
             }
         }
 
-        data.set(history);
+        DATA.set(history);
     }
 }
 
@@ -85,6 +85,6 @@ impl MonitoringModule {
     }
 
     pub fn get_data(&self) -> Vec<MonitoringItem> {
-        data.read().values().cloned().collect()
+        DATA.read().values().cloned().collect()
     }
 }

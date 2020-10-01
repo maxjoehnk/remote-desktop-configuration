@@ -99,6 +99,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "7.1.0"
+  byte_size:
+    dependency: "direct main"
+    description:
+      name: byte_size
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.4.1"
   characters:
     dependency: transitive
     description:
@@ -324,6 +331,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.4.1"
+  locales:
+    dependency: transitive
+    description:
+      name: locales
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.1.0"
   logging:
     dependency: transitive
     description:

@@ -1,5 +1,6 @@
 import 'package:client/modules/bluetooth/route.dart';
 import 'package:client/modules/controllers/route.dart';
+import 'package:client/modules/disks/route.dart';
 import 'package:client/modules/games/route.dart';
 import 'package:client/modules/monitoring/route.dart';
 import 'package:client/modules/sound/route.dart';
@@ -27,6 +28,7 @@ class SidenavList extends StatelessWidget {
         NavItem('Games', GameRoute.routeName, icon: GameRoute.icon),
         NavItem('Controllers', ControllerRoute.routeName, icon: ControllerRoute.icon),
         NavItem('Sensors', MonitoringRoute.routeName, icon: MonitoringRoute.icon),
+        NavItem('Disks', DisksRoute.routeName, icon: DisksRoute.icon),
       ],
     );
   }
