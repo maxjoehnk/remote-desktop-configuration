@@ -8,20 +8,28 @@ import 'package:flutter/material.dart';
 class Sidenav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: <Widget>[
-          NavItem('Sound', SoundRoute.routeName, icon: SoundRoute.icon),
-          NavItem('Bluetooth', BluetoothRoute.routeName, icon: BluetoothRoute.icon),
-          NavItem('Games', GameRoute.routeName, icon: GameRoute.icon),
-          NavItem('Controllers', ControllerRoute.routeName, icon: ControllerRoute.icon),
-          NavItem('Sensors', MonitoringRoute.routeName, icon: MonitoringRoute.icon),
-        ],
-      )
+    return Drawer(child: SidenavList());
+  }
+}
+
+class SidenavList extends StatelessWidget {
+  const SidenavList({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: MediaQuery.of(context).padding,
+      children: <Widget>[
+        NavItem('Sound', SoundRoute.routeName, icon: SoundRoute.icon),
+        NavItem('Bluetooth', BluetoothRoute.routeName, icon: BluetoothRoute.icon),
+        NavItem('Games', GameRoute.routeName, icon: GameRoute.icon),
+        NavItem('Controllers', ControllerRoute.routeName, icon: ControllerRoute.icon),
+        NavItem('Sensors', MonitoringRoute.routeName, icon: MonitoringRoute.icon),
+      ],
     );
   }
-
 }
 
 class NavItem extends StatelessWidget {

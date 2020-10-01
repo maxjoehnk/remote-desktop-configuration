@@ -1,4 +1,4 @@
-import 'package:client/shared/sidenav.dart';
+import 'package:client/shared/responsive_scaffold.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -8,10 +8,9 @@ class BluetoothRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: Sidenav(),
+    return ResponsiveScaffold(
       appBar: AppBar(title: Text('Bluetooth')),
-      body: Container(),
+      child: Container(),
     );
   }
 }

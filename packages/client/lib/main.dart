@@ -1,11 +1,11 @@
 import 'package:client/api/monitoring_api.dart';
 import 'package:client/api/sound_api.dart';
+import 'package:client/api/game_api.dart';
 import 'package:client/modules/bluetooth/route.dart';
 import 'package:client/modules/controllers/route.dart';
 import 'package:client/modules/games/route.dart';
 import 'package:client/modules/monitoring/route.dart';
 import 'package:client/modules/sound/route.dart';
-import 'package:client/api/game_api.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

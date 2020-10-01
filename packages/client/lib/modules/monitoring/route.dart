@@ -1,6 +1,6 @@
 import 'package:client/api/models/monitoring_item.dart';
 import 'package:client/api/monitoring_api.dart';
-import 'package:client/shared/sidenav.dart';
+import 'package:client/shared/responsive_scaffold.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,10 +12,9 @@ class MonitoringRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: Sidenav(),
+    return ResponsiveScaffold(
       appBar: AppBar(title: Text('Monitoring')),
-      body: GraphList(),
+      child: GraphList(),
     );
   }
 }

@@ -1,6 +1,6 @@
 import 'package:client/api/game_api.dart';
 import 'package:client/api/models/game.dart';
-import 'package:client/shared/sidenav.dart';
+import 'package:client/shared/responsive_scaffold.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,10 +11,9 @@ class GameRoute extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: Sidenav(),
+    return ResponsiveScaffold(
       appBar: AppBar(title: Text('Games')),
-      body: GameList(),
+      child: GameList(),
     );
   }
 }

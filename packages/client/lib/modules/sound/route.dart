@@ -3,7 +3,7 @@ import 'package:client/api/models/device_channel.dart';
 import 'package:client/api/sound_api.dart';
 import 'package:client/modules/sound/application_item.dart';
 import 'package:client/modules/sound/device_item.dart';
-import 'package:client/shared/sidenav.dart';
+import 'package:client/shared/responsive_scaffold.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,10 +21,9 @@ class _SoundRouteState extends State<SoundRoute> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      drawer: Sidenav(),
+    return ResponsiveScaffold(
       appBar: AppBar(title: Text('Sound')),
-      body: SoundRouteBody(activeTab),
+      child: SoundRouteBody(activeTab),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: activeTab,
         onTap: (tab) => this.setState(() {
